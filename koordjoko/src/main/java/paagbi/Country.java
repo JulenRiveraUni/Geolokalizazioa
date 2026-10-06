@@ -1,0 +1,33 @@
+package paagbi;
+
+public class Country {
+
+    private String name;
+
+    private double latitudeMin;
+    private double latitudeMax;
+
+    private double longitudeMin;
+    private double longitudeMax;
+
+    public Country(String name, double latitudeMin, double latitudeMax, double longitudeMin, double longitudeMax) {
+
+        this.name = name;
+        this.latitudeMin = latitudeMin;
+        this.latitudeMax = latitudeMax;
+        this.longitudeMin = longitudeMin;
+        this.longitudeMax = longitudeMax;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean contains(double latitude, double longitude) {
+
+        return latitude >= latitudeMin
+                && latitude <= latitudeMax
+                && longitude >= longitudeMin
+                && longitude <= longitudeMax;
+    }
+}
