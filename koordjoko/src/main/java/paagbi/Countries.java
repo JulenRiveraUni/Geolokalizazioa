@@ -1,30 +1,26 @@
 package paagbi;
 
-
 public class Countries {
 
-    private String name;
-
+    private String izena;
     private double latitudeMin;
     private double latitudeMax;
     private double longitudeMin;
     private double longitudeMax;
 
-    public Countries(String name, double latitudeMin, double latitudeMax, double longitudeMin, double longitudeMax) {
-
-        this.name = name;
+    public Countries(String izena, double latitudeMin, double latitudeMax,double longitudeMin, double longitudeMax) {
+        this.izena = izena;
         this.latitudeMin = latitudeMin;
         this.latitudeMax = latitudeMax;
         this.longitudeMin = longitudeMin;
         this.longitudeMax = longitudeMax;
     }
 
-    public String getName() {
-        return name;
+    public String getIzena() {
+        return izena;
     }
 
     public boolean contains(double latitude, double longitude) {
-
         return latitude >= latitudeMin
                 && latitude <= latitudeMax
                 && longitude >= longitudeMin

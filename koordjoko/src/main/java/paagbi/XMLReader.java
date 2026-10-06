@@ -11,89 +11,41 @@ import org.w3c.dom.NodeList;
 
 public class XMLReader {
 
-    public static List<Countries> leerPaises() {
+    public static List<Countries> irakurriHerrialdeak() {
 
-        List<Countries> paises = new ArrayList<>();
+        List<Countries> herrialdeak = new ArrayList<>();
 
         try {
+            InputStream fitxategia = XMLReader.class.getClassLoader().getResourceAsStream("Countries.xml");
 
-            InputStream archivo = XMLReader.class
-                    .getClassLoader()
-                    .getResourceAsStream("Countries.xml");
-
-            if (archivo == null) {
-                System.out.println("No se ha encontrado Countries.xml");
-                return paises;
+            if (fitxategia == null) {
+                System.out.println("Ez da Countries.xml aurkitu");
+                return herrialdeak;
             }
 
-            DocumentBuilderFactory factory =
-                    DocumentBuilderFactory.newInstance();
+            DocumentBuilderFactory fabrika = DocumentBuilderFactory.newInstance();
+            DocumentBuilder eraikitzailea = fabrika.newDocumentBuilder();
+            Document dokumentua = eraikitzailea.parse(fitxategia);
+            dokumentua.getDocumentElement().normalize();
+            NodeList herrialdeenZerrenda = dokumentua.getElementsByTagName("Herrialdea");
 
-            DocumentBuilder builder = factory.newDocumentBuilder();
+            for (int i = 0; i < herrialdeenZerrenda.getLength(); i++) {
+                Element herrialdea = (Element) herrialdeenZerrenda.item(i);
+                String izena = herrialdea.getElementsByTagName("Izena").item(0).getTextContent();
+                Element latitudea = (Element) herrialdea.getElementsByTagName("Latitudea").item(0);
+                Element longitudea = (Element) herrialdea.getElementsByTagName("Longitudea").item(0);
+                double latitudeMin = Double.parseDouble(latitudea.getElementsByTagName("Min").item(0).getTextContent());
+                double latitudeMax = Double.parseDouble(latitudea.getElementsByTagName("Max").item(0).getTextContent());
+                double longitudeMin = Double.parseDouble(longitudea.getElementsByTagName("Min").item(0).getTextContent());
+                double longitudeMax = Double.parseDouble(longitudea.getElementsByTagName("Max").item(0).getTextContent());
 
-            Document document = builder.parse(archivo);
-
-            document.getDocumentElement().normalize();
-
-            NodeList listaPaises =
-                    document.getElementsByTagName("Country");
-
-            for (int i = 0; i < listaPaises.getLength(); i++) {
-
-                Element pais = (Element) listaPaises.item(i);
-
-                String name = pais
-                        .getElementsByTagName("Name")
-                        .item(0)
-                        .getTextContent();
-
-                Element latitude = (Element) pais
-                        .getElementsByTagName("latitude")
-                        .item(0);
-
-                Element longitude = (Element) pais
-                        .getElementsByTagName("longitude")
-                        .item(0);
-
-                double latitudeMin = Double.parseDouble(
-                        latitude.getElementsByTagName("min")
-                                .item(0)
-                                .getTextContent()
-                );
-
-                double latitudeMax = Double.parseDouble(
-                        latitude.getElementsByTagName("max")
-                                .item(0)
-                                .getTextContent()
-                );
-
-                double longitudeMin = Double.parseDouble(
-                        longitude.getElementsByTagName("min")
-                                .item(0)
-                                .getTextContent()
-                );
-
-                double longitudeMax = Double.parseDouble(
-                        longitude.getElementsByTagName("max")
-                                .item(0)
-                                .getTextContent()
-                );
-
-                Countries nuevoPais = new Countries(
-                        name,
-                        latitudeMin,
-                        latitudeMax,
-                        longitudeMin,
-                        longitudeMax
-                );
-
-                paises.add(nuevoPais);
+                Countries herrialdeBerria = new Countries(izena,latitudeMin,latitudeMax,longitudeMin,longitudeMax);
+                herrialdeak.add(herrialdeBerria);
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return paises;
+        return herrialdeak;
     }
 }

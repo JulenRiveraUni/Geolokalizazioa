@@ -11,161 +11,122 @@ public class App {
 
         Scanner sc = new Scanner(System.in);
 
-        // Leer todos los países del XML
-        List<Countries> paises = XMLReader.leerPaises();
+        // XMLtik herrialdeak irakurri
+        List<Countries> herrialdeak = XMLReader.irakurriHerrialdeak();
 
-        // Elegir 3 países aleatorios
-        Collections.shuffle(paises);
+        // Herrialdeak nahastu
+        Collections.shuffle(herrialdeak);
 
-        List<Countries> paisesObjetivo = new ArrayList<>(
-                paises.subList(0, 3)
-        );
+        // 5 herrialde aukeratu
+        List<Countries> aukeratutakoHerrialdeak = new ArrayList<>(herrialdeak.subList(0, 5));
 
-        // ----------------------------------------
-        // ELEGIR LOS 2 PAÍSES PISTA
-        // ----------------------------------------
+        // Lehenengo 2 herrialdeak kutsatutakoak izango dira
+        List<Countries> kutsatutakoHerrialdeak = new ArrayList<>(aukeratutakoHerrialdeak.subList(0, 2));
 
-        // Copiamos todos los países
-        List<Countries> paisesPista = new ArrayList<>(paises);
+        // Aurkitutako herrialde kutsatuak
+        List<Countries> aurkitutakoHerrialdeak = new ArrayList<>();
 
-        // Quitamos los 3 países objetivo
-        paisesPista.removeAll(paisesObjetivo);
-
-        // Mezclamos los países restantes
-        Collections.shuffle(paisesPista);
-
-        // Elegimos las 2 primeras pistas
-        List<Countries> pistas = new ArrayList<>(
-                paisesPista.subList(0, 2)
-        );
-
-        // Lista de países encontrados
-        List<Countries> paisesDone = new ArrayList<>();
-
-        // ----------------------------------------
-        // INICIO DEL JUEGO
-        // ----------------------------------------
-
+        // JOKOAREN HASIERA
         System.out.println("================================");
-        System.out.println("       INVASIÓN ALIENÍGENA");
+        System.out.println("       INBASIO ALIENIGENA");
         System.out.println("================================");
         System.out.println();
-        System.out.println("Tienes que encontrar 3 países.");
-        System.out.println("Introduce coordenadas para intentar localizarlos.");
+        System.out.println("5 herrialde agertuko dira.");
+        System.out.println("Horietako 2 kutsatuta daude.");
+        System.out.println("Zure helburua 2 herrialde kutsatuak aurkitzea da.");
         System.out.println();
 
-        // ----------------------------------------
-        // MOSTRAR LOS PAÍSES OBJETIVO
-        // ----------------------------------------
-
+        // 5 HERRIALDEAK ERAKUTSI
         System.out.println("================================");
-        System.out.println("       PAÍSES A EXTERMINAR");
+        System.out.println("       HERRIALDEA AUKERATU");
         System.out.println("================================");
 
-        for (Countries pais : paisesObjetivo) {
-            System.out.println("- " + pais.getName());
-        }
-
-        System.out.println();
-
-        // ----------------------------------------
-        // MOSTRAR LAS PISTAS
-        // ----------------------------------------
-
-        System.out.println("================================");
-        System.out.println("           PAÍSES PISTA");
-        System.out.println("================================");
-
-        for (Countries pista : pistas) {
-
-            System.out.println();
-            System.out.println(pista.getName());
-
-            System.out.println(
-                    "Latitud: "
-                    + pista.getLatitudeMin()
-                    + " - "
-                    + pista.getLatitudeMax()
-            );
-
-            System.out.println(
-                    "Longitud: "
-                    + pista.getLongitudeMin()
-                    + " - "
-                    + pista.getLongitudeMax()
-            );
+        for (int i = 0; i < aukeratutakoHerrialdeak.size(); i++) {
+            System.out.println((i + 1) + ". " + aukeratutakoHerrialdeak.get(i).getIzena());
         }
 
         System.out.println();
         System.out.println("================================");
         System.out.println();
 
-        // ----------------------------------------
-        // JUEGO
-        // ----------------------------------------
+        // Lehenengo pista erakutsi
+        erakutsiPista(kutsatutakoHerrialdeak,aurkitutakoHerrialdeak);
 
-        // Mientras no encontremos los 3 países
-        while (paisesDone.size() < paisesObjetivo.size()) {
+        // JOKOA
+        while (aurkitutakoHerrialdeak.size() < 2) {
 
-            System.out.print("Introduce la latitud: ");
-            double latitude = sc.nextDouble();
+            System.out.print("Aukeratu herrialde bat (1-5): ");
 
-            System.out.print("Introduce la longitud: ");
-            double longitude = sc.nextDouble();
+            int aukera = sc.nextInt();
 
-            boolean encontrado = false;
-
-            // Comprobar la coordenada contra los países objetivo
-            for (Countries pais : paisesObjetivo) {
-
-                if (pais.contains(latitude, longitude)) {
-
-                    encontrado = true;
-
-                    // Comprobar que no lo hayamos encontrado antes
-                    if (!paisesDone.contains(pais)) {
-
-                        paisesDone.add(pais);
-
-                        System.out.println();
-                        System.out.println(
-                                "¡HAS ENCONTRADO " + pais.getName() + "!"
-                        );
-
-                        System.out.println(
-                                "Países encontrados: "
-                                + paisesDone.size()
-                                + "/"
-                                + paisesObjetivo.size()
-                        );
-
-                    } else {
-
-                        System.out.println();
-                        System.out.println(
-                                "Ya habías encontrado "
-                                + pais.getName()
-                                + "."
-                        );
-                    }
-
-                    break;
-                }
+            // Aukera zuzena den egiaztatu
+            if (aukera < 1 || aukera > 5) {
+                System.out.println();
+                System.out.println("Aukera okerra. 1 eta 5 arteko zenbaki bat sartu.");
+                System.out.println();
+                continue;
             }
 
-            if (!encontrado) {
+            // Aukeratutako herrialdea lortu
+            Countries aukeratutakoHerrialdea = aukeratutakoHerrialdeak.get(aukera - 1);
+
+            // Herrialdea kutsatuta dagoen egiaztatu
+            if (kutsatutakoHerrialdeak.contains(aukeratutakoHerrialdea)) {
+
+                // Aurretik aurkitu den egiaztatu
+                if (!aurkitutakoHerrialdeak.contains(aukeratutakoHerrialdea)) {
+
+                    aurkitutakoHerrialdeak.add(aukeratutakoHerrialdea);
+
+                    System.out.println();
+                    System.out.println("AURKITU DUZU: " + aukeratutakoHerrialdea.getIzena()+ "!");
+                    System.out.println("Aurkitutako herrialde kutsatuak: " + aurkitutakoHerrialdeak.size()+ "/2");
+
+                } else {
+                    System.out.println();
+                    System.out.println("Dagoeneko aurkitu duzu " + aukeratutakoHerrialdea.getIzena()+ ".");}
+
+            } else { // HUTS EGIN DU
 
                 System.out.println();
-                System.out.println("No has encontrado ningún país.");
+                System.out.println("EZ DUZU ASMATU!");
+
+                // Pista erakutsi
+                erakutsiPista(kutsatutakoHerrialdeak,aurkitutakoHerrialdeak);
             }
 
             System.out.println();
         }
 
+        // JOKOA AMAITU
         System.out.println("================================");
-        System.out.println("¡HAS EXTERMINADO LOS 3 PAÍSES!");
+        System.out.println( "  2 HERRIALDEAK DESAGERRARAZI DITUZU!");
         System.out.println("================================");
+        System.out.println();
+
+        System.out.println("Zorionak! Inbasioa gelditu duzu.");
 
         sc.close();
+    }
+
+    //Pista erakusteko metodoa
+    public static void erakutsiPista(List<Countries> kutsatutakoHerrialdeak,List<Countries> aurkitutakoHerrialdeak) {
+
+        // Oraindik aurkitu gabeko herrialde kutsatuak bilatu
+        List<Countries> faltaDirenHerrialdeak = new ArrayList<>(kutsatutakoHerrialdeak);
+
+        faltaDirenHerrialdeak.removeAll(aurkitutakoHerrialdeak);
+
+        // Lehenengo falta den herrialde kutsatua hartu
+        Countries pista = faltaDirenHerrialdeak.get(0);
+
+        System.out.println();
+        System.out.println("================================");
+        System.out.println("              PISTA");
+        System.out.println("================================");
+        System.out.println("Latitudea: " + pista.getLatitudeMin() + " - " + pista.getLatitudeMax());
+        System.out.println("Longitudea: " + pista.getLongitudeMin() + " - " + pista.getLongitudeMax());
+        System.out.println("================================");
+        System.out.println();
     }
 }
