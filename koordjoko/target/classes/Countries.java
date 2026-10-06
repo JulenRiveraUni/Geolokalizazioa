@@ -1,6 +1,6 @@
 package paagbi;
 
-public class Country {
+public class Countries {
 
     private String name;
 
@@ -10,7 +10,7 @@ public class Country {
     private double longitudeMin;
     private double longitudeMax;
 
-    public Country(String name, double latitudeMin, double latitudeMax, double longitudeMin, double longitudeMax) {
+    public Countries(String name, double latitudeMin, double latitudeMax, double longitudeMin, double longitudeMax) {
 
         this.name = name;
         this.latitudeMin = latitudeMin;
