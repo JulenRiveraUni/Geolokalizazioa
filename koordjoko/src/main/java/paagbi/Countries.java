@@ -38,7 +38,7 @@ public class Countries {
     public double getLongitudeMin() {
         return longitudeMin;
     }
-
+//Hermanooo
     public double getLongitudeMax() {
         return longitudeMax;
     }
