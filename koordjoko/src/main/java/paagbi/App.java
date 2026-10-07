@@ -81,10 +81,16 @@ public class App {
                     System.out.println();
                     System.out.println("AURKITU DUZU: " + aukeratutakoHerrialdea.getIzena()+ "!");
                     System.out.println("Aurkitutako herrialde kutsatuak: " + aurkitutakoHerrialdeak.size()+ "/2");
+                    // Pista erakutsi
+                    erakutsiPista(kutsatutakoHerrialdeak,aurkitutakoHerrialdeak);
 
                 } else {
                     System.out.println();
-                    System.out.println("Dagoeneko aurkitu duzu " + aukeratutakoHerrialdea.getIzena()+ ".");}
+                    System.out.println("Dagoeneko aurkitu duzu " + aukeratutakoHerrialdea.getIzena()+ ".");
+                
+                    // Pista erakutsi
+                    erakutsiPista(kutsatutakoHerrialdeak,aurkitutakoHerrialdeak);
+                }
 
             } else { // HUTS EGIN DU
 
@@ -111,7 +117,7 @@ public class App {
 
     //Pista erakusteko metodoa
     public static void erakutsiPista(List<Countries> kutsatutakoHerrialdeak,List<Countries> aurkitutakoHerrialdeak) {
-
+        if(aurkitutakoHerrialdeak.size() != 2){
         // Oraindik aurkitu gabeko herrialde kutsatuak bilatu
         List<Countries> faltaDirenHerrialdeak = new ArrayList<>(kutsatutakoHerrialdeak);
 
@@ -128,5 +134,8 @@ public class App {
         System.out.println("Longitudea: " + pista.getLongitudeMin() + " - " + pista.getLongitudeMax());
         System.out.println("================================");
         System.out.println();
+            
+        }
+        
     }
 }
