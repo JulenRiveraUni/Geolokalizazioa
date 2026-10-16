@@ -1,0 +1,183 @@
+{
+  "Herrialdea" : [ {
+    "Izena" : "Espainia",
+    "Latitudea" : {
+      "Min" : 35.95,
+      "Max" : 43.75
+    },
+    "Longitudea" : {
+      "Min" : -9.39,
+      "Max" : 3.04
+    }
+  }, {
+    "Izena" : "AEB",
+    "Latitudea" : {
+      "Min" : 25.0,
+      "Max" : 49.5
+    },
+    "Longitudea" : {
+      "Min" : -125.0,
+      "Max" : -66.96
+    }
+  }, {
+    "Izena" : "Frantzia",
+    "Latitudea" : {
+      "Min" : 42.5,
+      "Max" : 51.15
+    },
+    "Longitudea" : {
+      "Min" : -5.0,
+      "Max" : 9.56
+    }
+  }, {
+    "Izena" : "Txina",
+    "Latitudea" : {
+      "Min" : 18.2,
+      "Max" : 53.46
+    },
+    "Longitudea" : {
+      "Min" : 73.68,
+      "Max" : 135.03
+    }
+  }, {
+    "Izena" : "Japonia",
+    "Latitudea" : {
+      "Min" : 31.03,
+      "Max" : 45.55
+    },
+    "Longitudea" : {
+      "Min" : 129.41,
+      "Max" : 145.54
+    }
+  }, {
+    "Izena" : "Hego Korea",
+    "Latitudea" : {
+      "Min" : 34.39,
+      "Max" : 38.61
+    },
+    "Longitudea" : {
+      "Min" : 126.12,
+      "Max" : 129.47
+    }
+  }, {
+    "Izena" : "Israel",
+    "Latitudea" : {
+      "Min" : 29.5,
+      "Max" : 33.28
+    },
+    "Longitudea" : {
+      "Min" : 34.27,
+      "Max" : 35.84
+    }
+  }, {
+    "Izena" : "Maroko",
+    "Latitudea" : {
+      "Min" : 21.42,
+      "Max" : 35.76
+    },
+    "Longitudea" : {
+      "Min" : -17.02,
+      "Max" : -1.12
+    }
+  }, {
+    "Izena" : "Portugal",
+    "Latitudea" : {
+      "Min" : 36.84,
+      "Max" : 42.28
+    },
+    "Longitudea" : {
+      "Min" : -9.53,
+      "Max" : -6.39
+    }
+  }, {
+    "Izena" : "Brasil",
+    "Latitudea" : {
+      "Min" : -33.77,
+      "Max" : 5.24
+    },
+    "Longitudea" : {
+      "Min" : -73.99,
+      "Max" : -34.73
+    }
+  }, {
+    "Izena" : "Kanada",
+    "Latitudea" : {
+      "Min" : 41.68,
+      "Max" : 73.23
+    },
+    "Longitudea" : {
+      "Min" : -141.0,
+      "Max" : -52.65
+    }
+  }, {
+    "Izena" : "Mexiko",
+    "Latitudea" : {
+      "Min" : 14.54,
+      "Max" : 32.72
+    },
+    "Longitudea" : {
+      "Min" : -117.13,
+      "Max" : -86.81
+    }
+  }, {
+    "Izena" : "Peru",
+    "Latitudea" : {
+      "Min" : -18.35,
+      "Max" : -0.06
+    },
+    "Longitudea" : {
+      "Min" : -81.41,
+      "Max" : -68.67
+    }
+  }, {
+    "Izena" : "Errusia",
+    "Latitudea" : {
+      "Min" : 41.15,
+      "Max" : 81.25
+    },
+    "Longitudea" : {
+      "Min" : -180.0,
+      "Max" : 180.0
+    }
+  }, {
+    "Izena" : "Uganda",
+    "Latitudea" : {
+      "Min" : -1.44,
+      "Max" : 4.25
+    },
+    "Longitudea" : {
+      "Min" : 29.58,
+      "Max" : 35.04
+    }
+  }, {
+    "Izena" : "Christmas uhartea",
+    "Latitudea" : {
+      "Min" : -10.583,
+      "Max" : -10.4
+    },
+    "Longitudea" : {
+      "Min" : 105.517,
+      "Max" : 105.717
+    }
+  }, {
+    "Izena" : "Little Saint James",
+    "Latitudea" : {
+      "Min" : 18.295,
+      "Max" : 18.305
+    },
+    "Longitudea" : {
+      "Min" : -64.83,
+      "Max" : -64.82
+    }
+  }, {
+    "Izena" : "Papua Ginea Berria",
+    "Latitudea" : {
+      "Min" : -10.65,
+      "Max" : -2.5
+    },
+    "Longitudea" : {
+      "Min" : 141.0,
+      "Max" : 156.02
+    }
+  } ]
+}

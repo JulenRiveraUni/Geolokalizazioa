@@ -11,8 +11,15 @@ public class App {
 
         Scanner sc = new Scanner(System.in);
 
-        // XMLtik herrialdeak irakurri
-        List<Countries> herrialdeak = XMLReader.irakurriHerrialdeak();
+        // Formatua aukeratu
+        System.out.println("Formatua aukeratu: \n1. XML  2. JSON");
+        System.out.print(" > ");
+        int formatua = sc.nextInt();
+
+        // Herrialdeak aukeratutako formatutik irakurri
+        List<Countries> herrialdeak = (formatua == 2)
+                ? JSONReader.irakurriHerrialdeak()
+                : XMLReader.irakurriHerrialdeak();
 
         // Herrialdeak nahastu
         Collections.shuffle(herrialdeak);
