@@ -30,7 +30,7 @@ public class Countries {
     public double getLatitudeMin() {
         return latitudeMin;
     }
-
+//Te voy a matah
     public double getLatitudeMax() {
         return latitudeMax;
     }
@@ -38,7 +38,7 @@ public class Countries {
     public double getLongitudeMin() {
         return longitudeMin;
     }
-
+//Hermanooo
     public double getLongitudeMax() {
         return longitudeMax;
     }
